@@ -1,12 +1,13 @@
-/**
+/*
  * This class is used to perform a unit test on the
  * ArrayPractice class.  
  * 
  * DO NOT ALTER THIS CLASS UNTIL INSTRUCTED TO DO SO.  
  *
- * @author Prof. White, modified by (your names)
- * @version Fall 2019
+ * @author Prof. White, modified by Jordan Breen
+ * @version 01/27/2020
  */
+import java.util.Random;
 public class UnitTestArrayPractice
 {
     public static void main(String args[])
@@ -59,6 +60,42 @@ public class UnitTestArrayPractice
         System.out.print("Actual:    Lengths:  ");
         printArray(ArrayPractice.stringLengths(sArr));
         System.out.println("\n***End test ArrayPractice.stringLengths(String[])***\n");
+        
+        //Custom Test
+        
+        Random rand = new Random();
+        Double[] dubArr = new Double[rand.nextInt(5)+6];
+        Integer[] intArr = new Integer[rand.nextInt(5)+6];
+        for(int i = 0; i < dubArr.length; i++)
+        {
+            dubArr[i] = (rand.nextInt(4) + rand.nextDouble()) - 2.0;
+        }
+        for(int i = 0; i < intArr.length; i++)
+        {
+            intArr[i] = rand.nextInt(21) - 10;
+        }
+        System.out.print("\n\n\n\n\n");
+        System.out.println("***Testing ArrayPractice.sum(Double[])***\n");
+        printArray(dubArr);
+        System.out.println("Sum of elements:  " + ArrayPractice.sum(dubArr));
+        System.out.println("\n***End test ArrayPractice.sum(Double[])***\n");
+
+        System.out.println("***Testing ArrayPractice.sum(Integer[])***\n");
+        printArray(intArr);
+        System.out.println("Sum of elements:  " + ArrayPractice.sum(intArr));
+        System.out.println("\n***End test ArrayPractice.sum(Integer[])***\n");
+        
+        System.out.println("***Testing ArrayPractice.largest(Integer[])***\n");
+        printArray(intArr);
+        System.out.println("Largest:  " + ArrayPractice.largest(intArr));
+        System.out.println("\n***End test ArrayPractice.largest(Integer[])***\n");
+
+        System.out.println("***Testing ArrayPractice.countLarger(Integer[], int)***\n");
+        System.out.print("values larger than " + intArr[0] + " in ");
+        printArray(intArr);
+        System.out.println("Larger:  " + ArrayPractice.countLarger(intArr, intArr[0]));
+        System.out.println("\n***End test ArrayPractice.countLarger(Integer[], int)***\n");
+
     }
 
     /**
