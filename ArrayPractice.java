@@ -1,11 +1,11 @@
-/**
+/*
  * CSIS-210 Lab 0
  * 
  * Complete each of the following methods according to the method comments.
  * DO NOT CHANGE THE METHOD HEADERS.
  *
- * @author (your names)
- * @version (a version number or a date)
+ * @author Jordan Breen
+ * @version 01/27/2020
  */
 public class ArrayPractice
 {
@@ -17,7 +17,12 @@ public class ArrayPractice
      */
     public static double sum(Double arr[])
     {
-        return -1.0;
+        double sumDouble = 0;
+        for(int i = 0; i < arr.length; i++)
+        {
+            sumDouble += arr[i];
+        }
+        return sumDouble;
     }
 
     /**
@@ -28,7 +33,12 @@ public class ArrayPractice
      */
     public static int sum(Integer arr[])
     {
-        return -1;
+        int sumInt = 0;
+        for(int i = 0; i < arr.length; i++)
+        {
+            sumInt += arr[i];
+        }
+        return sumInt;
     }
     
     /**
@@ -39,7 +49,15 @@ public class ArrayPractice
      */
     public static int largest(Integer arr[])
     {
-        return -1;
+        int largestInt = arr[0];
+        for(int i = 0; i < arr.length; i++)
+        {
+            if (arr[i] > largestInt)
+            {
+                largestInt = arr[i];
+            }
+        }
+        return largestInt;
     }
     
     /**
@@ -53,7 +71,15 @@ public class ArrayPractice
      */
     public static int countLarger(Integer arr[], int value)
     {
-        return -1;
+        int largerThanInputCt = 0;
+        for(int i = 0; i < arr.length; i++)
+        {
+            if (arr[i] > value)
+            {
+                largerThanInputCt++;
+            }
+        }
+        return largerThanInputCt;
     }
     
     /**
@@ -66,7 +92,15 @@ public class ArrayPractice
      */
     public static int countTrue(Boolean arr[])
     {
-        return -1;
+        int trueCt = 0;
+        for(int i = 0; i < arr.length; i++)
+        {
+            if (arr[i] == true)
+            {
+                trueCt++;
+            }
+        }
+        return trueCt;
     }
     
     /**
@@ -81,7 +115,14 @@ public class ArrayPractice
      */
     public static Integer[] stringLengths(String arr[])
     {
-        return null;
+        Integer[] stringLengthArr = new Integer[arr.length];
+        String stringHolder;
+        for(int i = 0; i < arr.length; i++)
+        {
+            stringHolder = arr[i];
+            stringLengthArr[i] = stringHolder.length();
+        }
+        return stringLengthArr;
     }
     
 }
