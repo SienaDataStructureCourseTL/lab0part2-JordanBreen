@@ -1,4 +1,4 @@
-/**
+/*
  * In this class, an array is used to keep track of
  * integer values.  The length of the array is determined
  * upon construction of the ArrayManager object.  The
@@ -15,21 +15,21 @@
  * Debug (DO NOT WRITE YOUR OWN) the methods so they work as required.  
  * Bugs may include logic errors, syntax errors, and/or runtime errors.
  *
- * @author Prof. White, modified by (your names)
- * @version Lab 0, Fall 2019
+ * @author Prof. White, modified by Jordan Breen
+ * @version Lab 0, 01/27/2020
  */
 public class ArrayManager
 {
     //DO NOT MODIFY THE INSTANCE VARIABLES.
 
     //The integer array.
-    private int iArr[];
+    private int[] iArr;
 
     //The location in the array where the next value
     //placed in the array should be stored.
     private int nextAvailable;
 
-    /**
+    /*
      * Constructs an ArrayManager object with the
      * input number of elements in and integer array.
      * 
@@ -40,9 +40,14 @@ public class ArrayManager
     public ArrayManager(int numElements)
     {
         nextAvailable = 0;
+        iArr = new int[numElements];
+        for (int i = 0; i < numElements; i++)
+        {
+            iArr[i] = -999;
+        }
     }
 
-    /**
+    /*
      * Adds the input value in the next available location
      * in the array.  If there are no available locations, 
      * the value is not added.
@@ -52,11 +57,14 @@ public class ArrayManager
      */
     public void addElement(int value)
     {
-        iArr[nextAvailable] = value;
-        nextAvailable++;
+        if (nextAvailable < iArr.length)
+        {
+            iArr[nextAvailable] = value;
+            nextAvailable++;
+        }
     }
 
-    /**
+    /*
      * Inserts the input value in the input location in the
      * array.  Values to the right of the input location
      * are shifted to the right.  If there is not at least
@@ -73,8 +81,13 @@ public class ArrayManager
     {
         // Hint: there are two errors in the for loop header
         if(nextAvailable < iArr.length && location <= nextAvailable)
+        /* 
+         * iterated insert index is less than the length of the array 
+         * AND
+         * chosen insert index is less than or equal to iterated insert index
+         */ 
         {
-            for(int i = iArr.length; i > location; i++)
+            for(int i = iArr.length - 1; i >= location; i--)
             {
                 iArr[i] = iArr[i - 1];
             }
@@ -83,7 +96,7 @@ public class ArrayManager
         }
     }
 
-    /**
+    /*
      * Removes and returns the value at the location in the array.  If the 
      * input location is to the left of the next available location in the 
      * array, the value is removed and all elements to the right of the 
@@ -99,14 +112,15 @@ public class ArrayManager
     public int removeElement(int location)
     {
         // Hint: there are 2 errors in this method. One of the errors is in the for loop body.
-        int value;
+          int value = 0;
+        //int value;
 
         if(location < nextAvailable)
         {
             value = iArr[location];
             for(int i = location; i < nextAvailable - 1; i++)
             {
-                iArr[i] = iArr[i - 1];
+                iArr[i] = iArr[i + 1];
             }
             nextAvailable--;
             iArr[nextAvailable] = -999;
